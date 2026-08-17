@@ -126,6 +126,20 @@ export const mockProducts: Product[] = [
     ],
     sizes: ["Talla Única"],
   },
+  {
+    id: "cp2",
+    name: "Portachupetes y Manta Personalizada",
+    price: 28.0,
+    description:
+      "Conjunto personalizado compuesto por una mantita suave y un portachupetes a juego. Bordamos el nombre del bebé a mano para hacerlo único. Ideal para regalo.",
+    materials: ["100% Algodón", "Forro polar suave", "Pinza metálica sin níquel"],
+    category: "complementos",
+    images: [
+      "/bolsitos.png",
+    ],
+    sizes: ["Talla Única"],
+    isNew: true,
+  },
 ];
 
 export function getProductsByCategory(category: CategorySlug): Product[] {

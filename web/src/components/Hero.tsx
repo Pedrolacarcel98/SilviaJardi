@@ -3,10 +3,11 @@ export default function Hero() {
     <section className="w-full max-w-[1200px] mx-auto px-6 mt-16 mb-32 relative">
       <div className="rounded-xl overflow-hidden relative h-[614px] min-h-[400px] flex items-center justify-center ambient-glow bg-surface-container-lowest">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-90 mix-blend-multiply"
+          className="absolute inset-0"
           style={{
-            backgroundImage:
-              "url('https://lh3.googleusercontent.com/aida-public/AB6AXuApehwY3lI1HKZ63udABIdglSo4Rn4kCd46Jw3VwvHl6pESYZQ1psPN6W5yValf7aFbXtRlODOjHY3LAf-9L1ZVLKwtW7jtAReayYSZYbkekzQ34saQoEJqyAaFytyfIe9Y6ZJ3D41guPP7CMomHnwXtPGMXt4Qgh2M22T3trfoJW7SLoNumchIcmpI8zMk5fpO7Qo7idKzf5dqEWvdby8Oizsx6M2jcdmGBryIqDPBJS1mAgAvl8zM')",
+            backgroundImage: "repeating-conic-gradient(var(--color-primary) 0% 25%, #ffffff 0% 50%)",
+            backgroundSize: "40px 40px",
+            backgroundPosition: "center"
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent"></div>
