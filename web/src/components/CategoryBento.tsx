@@ -12,7 +12,7 @@ export default function CategoryBento() {
     {
       title: "Ropa de Bebé",
       description: "Prendas cómodas para el día a día.",
-      image: "/images/categoria-bebes.png",
+      image: "/images/categoria-bebes.jpg",
       href: "/categoria/bebes",
     },
     {
