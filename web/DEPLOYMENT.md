@@ -1,12 +1,12 @@
-# Guía del Proyecto: Desarrollo Local y Despliegue en Servidor
+# Guía del Proyecto: Desarrollo Local y Despliegue en Vercel
 
-Esta guía te explicará cómo trabajar en el proyecto desde tu ordenador (local), cómo guardar los cambios, y cómo hacer que esos cambios se reflejen en tu máquina virtual (Google VM) para que el comportamiento sea idéntico.
+Esta guía te explicará cómo trabajar en el proyecto desde tu ordenador (local), cómo guardar los cambios, y cómo hacer que esos cambios se reflejen en tu servidor en producción (Vercel).
 
 ---
 
 ## 💻 1. Desarrollo en Local (Tu Ordenador)
 
-Para trabajar cómodamente en tu ordenador con recarga automática (hot-reload), lo mejor es usar Node.js directamente. 
+Para trabajar cómodamente en tu ordenador con recarga automática (hot-reload), usamos Node.js y Next.js. 
 
 ### Prerrequisitos
 - Tener **Node.js** instalado en tu PC (versión 20 o superior).
@@ -29,7 +29,7 @@ Para trabajar cómodamente en tu ordenador con recarga automática (hot-reload),
 
 ## 🚀 2. Subir tus cambios al repositorio
 
-Una vez hayas terminado de programar y estés contento con cómo se ve en tu ordenador, debes subir esos cambios a la "nube" (GitHub/GitLab) para que el servidor pueda descargarlos.
+Una vez hayas terminado de programar y estés contento con cómo se ve en tu ordenador, debes subir esos cambios a la "nube" (GitHub) para que el servidor (Vercel) pueda detectarlos y actualizar la web.
 
 En la terminal (puedes abrir una nueva o detener el servidor con `Ctrl+C`), ejecuta:
 
@@ -46,42 +46,31 @@ git push
 
 ---
 
-## 🌍 3. Reflejar los cambios en el Servidor (Google VM)
+## 🌍 3. Reflejar los cambios en el Servidor (Vercel)
 
-Ahora que tu código está en el repositorio, solo falta decirle a la máquina virtual que lo descargue y actualice la web en producción.
+Vercel está conectado directamente a tu repositorio de GitHub. Esto significa que el proceso de despliegue es **100% automático**.
 
-Gracias a que configuramos **Docker** en el servidor, no importa qué versión de Node tengas allí, funcionará exactamente igual que en local.
+1. En cuanto ejecutes `git push` en tu ordenador, Vercel detectará el cambio automáticamente.
+2. Vercel construirá la web (Building) y generará una versión optimizada para producción.
+3. En un par de minutos, la web estará actualizada en tu dominio público sin que tengas que tocar ningún servidor ni ejecutar ningún comando de consola adicional.
 
-### Si es la primera vez que configuras la VM:
-```bash
-# Instalar Docker y Git (Ubuntu/Debian)
-sudo apt update && sudo apt install -y git docker.io docker-compose
-sudo systemctl enable --now docker
-sudo usermod -aG docker $USER
-newgrp docker
+Puedes ver el estado del despliegue en tiempo real entrando en tu panel de control (Dashboard) en [vercel.com](https://vercel.com).
 
-# Clonar el proyecto
-git clone <URL_DE_TU_REPOSITORIO>
-cd SilviaJardi/web
-```
+---
 
-### Para actualizar la web (Tu flujo de trabajo habitual):
-Entra a la terminal de tu Google VM, navega a la carpeta del proyecto y ejecuta estos dos comandos:
+## 📸 4. Gestión de Productos (Admin) y Subida de Imágenes
 
-```bash
-# 1. Descargar los últimos cambios que subiste desde tu ordenador local
-git pull
+Se ha habilitado una ruta de administración (`/admin`) para subir productos nuevos de forma visual e intuitiva sin necesidad de editar código.
 
-# 2. Reconstruir la web y reiniciar el servidor sin cortes (cero downtime)
-docker-compose up -d --build
-```
+### En Local (Tu PC)
+La subida de archivos está configurada para guardar las imágenes directamente en la carpeta `public/uploads/` de tu proyecto y actualizar el archivo local `src/data/products.json`.
+- **Funcionamiento**: Es inmediato y perfecto para probar, desarrollar o añadir productos desde tu ordenador de casa.
+- **Importante**: Los productos o fotos que subas localmente **no se suben automáticamente a la nube**. Debes hacer el proceso de `git add .`, `git commit` y `git push` (Paso 2) para que esos productos nuevos suban al repositorio y luego a Vercel.
 
-¡Y ya está! La aplicación compilará la versión optimizada de Next.js y se actualizará de forma invisible para los usuarios. Tu web estará corriendo en la IP pública de tu VM en el puerto `3000`.
+### En Producción (Vercel)
+El guardado directo de imágenes o archivos en carpetas locales **NO FUNCIONA** en Vercel. Vercel es un entorno "Serverless" (sin servidor fijo), lo que significa que su sistema de archivos es efímero (de solo lectura). Cualquier archivo que la web intente guardar en disco mientras está en producción será destruido instantáneamente.
 
-### Comandos útiles en el servidor (Docker):
-- **Ver los logs de la web en vivo:** `docker-compose logs -f`
-- **Detener la aplicación:** `docker-compose stop`
-- **Volver a iniciarla:** `docker-compose start`
-- **Apagar y eliminar el contenedor:** `docker-compose down`
-
-*(Nota: Asegúrate de que en el Firewall de Google Cloud tengas abierto el puerto TCP 3000 para poder acceder a la web, o el puerto 80 si luego añades un proxy como Nginx).*
+**Siguientes pasos para escalar la web:**
+Para que el panel de administración funcione en la web pública (y puedas subir productos desde el móvil mientras estás por la calle):
+1. **Base de Datos**: Sustituir el archivo local `products.json` por una base de datos en la nube gratuita ofrecida por la misma plataforma, como **Vercel Postgres**.
+2. **Storage para Fotos**: Configurar **Vercel Blob** (o servicios externos como Cloudinary o AWS S3). La API que hemos creado (`/api/products`) se debe actualizar para subir las fotos directamente a Vercel Blob y guardar el enlace (URL) en la base de datos, en lugar de intentar escribirlas en el disco duro.

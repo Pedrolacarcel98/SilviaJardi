@@ -1,11 +1,15 @@
+import { getPortfolioItems } from "@/data/mockPortfolio";
+import PortfolioGallery from "@/components/PortfolioGallery";
 
 export default function FlamencaPage() {
+  const items = getPortfolioItems("feria");
+
   return (
     <main className="flex-grow w-full flex flex-col items-center">
       {/* Hero Flamenca (Tonos Albero y Rojo Clavel) */}
       <section className="w-full relative h-[600px] flex items-center justify-center bg-amber-50">
         <div className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-multiply" 
-             style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2g0nzKs8L_dQ6axt1I2jnqXYCWzB2tortIHUctNKuNjIrfiwSSdttOgfqzMwcsxOVXRys6OF0nphHubhtrTuL19Y4SuQRJceVw2PLtjHYfaPgOn1zrajHyI01v17Qh5jot360FwWwOTrR35Hj0jqlMOQmgy7WOqjrQCpGPzh0Nk2nKL-LNECJrhGvTVCkvt3Mf493vQicUIPB2DdFFyPuOelAjnOYzd9Sz7R7o5uB_uQbW_IPXjDa')" }}>
+             style={{ backgroundImage: "url('/images/fondo-flamenca.jpg')" }}>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-amber-50 to-transparent"></div>
         
@@ -29,12 +33,12 @@ export default function FlamencaPage() {
       </section>
 
       {/* Info Section */}
-      <section className="w-full max-w-[1000px] mx-auto px-6 py-24 text-center">
-        <div className="mb-16">
+      <section className="w-full max-w-[1200px] mx-auto px-6 py-16 text-center">
+        <div className="mb-12">
           <span className="material-symbols-outlined text-red-700 text-[48px] mb-4">
             design_services
           </span>
-          <h2 className="font-headline-lg text-[36px] font-semibold text-amber-900 mb-6">
+          <h2 className="font-headline-lg text-[36px] font-semibold text-amber-900 mb-4">
             Confección Exclusiva
           </h2>
           <p className="font-body-lg text-[18px] text-amber-800/80 leading-relaxed max-w-2xl mx-auto">
@@ -42,25 +46,19 @@ export default function FlamencaPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="bg-amber-100/50 p-8 rounded-2xl border border-amber-200/50">
-            <h3 className="font-headline-md text-[24px] text-red-800 mb-4">Toma de Medidas</h3>
-            <p className="font-body-md text-amber-900/70">
-              Trato personalizado para asegurar que el vestido se ajuste perfectamente a ti.
+        {/* Dynamic Gallery */}
+        <div className="mt-16">
+          <h3 className="font-headline-md text-[28px] text-red-800 mb-10 border-b-2 border-red-800/20 pb-4 inline-block">
+            Nuestros Modelos
+          </h3>
+          
+          {items.length > 0 ? (
+            <PortfolioGallery items={items} theme="feria" />
+          ) : (
+            <p className="font-body-md text-amber-900/60 py-12 border-2 border-dashed border-amber-200 rounded-xl">
+              Próximamente añadiremos fotos de nuestros modelos.
             </p>
-          </div>
-          <div className="bg-amber-100/50 p-8 rounded-2xl border border-amber-200/50">
-            <h3 className="font-headline-md text-[24px] text-red-800 mb-4">Elección de Telas</h3>
-            <p className="font-body-md text-amber-900/70">
-              Asesoramiento en la combinación de colores, lunares, encajes y flecos.
-            </p>
-          </div>
-          <div className="bg-amber-100/50 p-8 rounded-2xl border border-amber-200/50">
-            <h3 className="font-headline-md text-[24px] text-red-800 mb-4">Pruebas</h3>
-            <p className="font-body-md text-amber-900/70">
-              Ajustamos cada volante y costura hasta que te sientas espectacular.
-            </p>
-          </div>
+          )}
         </div>
       </section>
     </main>

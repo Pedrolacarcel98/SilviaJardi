@@ -1,0 +1,119 @@
+[
+  {
+    "id": "b1",
+    "name": "Pelele de Punto Celeste",
+    "price": 38,
+    "description": "Pelele de punto clásico con detalles en el cuello. Abertura en la espalda y entrepierna para facilitar el cambio de pañal.",
+    "materials": [
+      "100% Dralón (Hipoalergénico)"
+    ],
+    "careGuide": "Lavado a máquina a 30º. Secar en plano.",
+    "category": "bebes",
+    "images": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCsFY1WvM_ixSLkBrAI6_HVW6sBVSrin3NSWoFMEWWg1s3sdNIeG_Y8diIs41xzWP7mrKZrRvXjmeUXVnhZRadZTh4el3NPwtsGo3YeGJviW58R5vI0RAUaWo6xyf29ZaMD1dua876yXbyJCBph39RG46c3qKSB799LOXhkjc3P_I9Xg-DBzLmME7sdX3QRSJ66ctIJikLfV9_xGQ677rYwt3Zz9-PNhAI7E7b4TMyg5PT1gJf6GMOW"
+    ],
+    "sizes": [
+      "0-3 meses",
+      "3-6 meses",
+      "6-9 meses",
+      "9-12 meses"
+    ],
+    "isNew": false
+  },
+  {
+    "id": "b2",
+    "name": "Conjunto Ranita y Blusa Blanca",
+    "price": 42,
+    "description": "Elegante conjunto de dos piezas. Ranita estampada con forro interior y blusa blanca de batista con cuello volante.",
+    "materials": [
+      "100% Algodón Batista"
+    ],
+    "category": "bebes",
+    "images": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB2g0nzKs8L_dQ6axt1I2jnqXYCWzB2tortIHUctNKuNjIrfiwSSdttOgfqzMwcsxOVXRys6OF0nphHubhtrTuL19Y4SuQRJceVw2PLtjHYfaPgOn1zrajHyI01v17Qh5jot360FwWwOTrR35Hj0jqlMOQmgy7WOqjrQCpGPzh0Nk2nKL-LNECJrhGvTVCkvt3Mf493vQicUIPB2DdFFyPuOelAjnOYzd9Sz7R7o5uB_uQbW_IPXjDa"
+    ],
+    "sizes": [
+      "3-6 meses",
+      "6-12 meses",
+      "12-18 meses",
+      "18-24 meses"
+    ]
+  },
+  {
+    "id": "n1",
+    "name": "Jersey Tricot Clásico",
+    "price": 35,
+    "description": "Jersey de punto con diseño de ochos. Muy cómodo y abrigado para las tardes de invierno.",
+    "materials": [
+      "50% Algodón",
+      "50% Acrílico"
+    ],
+    "category": "ninos",
+    "images": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuApehwY3lI1HKZ63udABIdglSo4Rn4kCd46Jw3VwvHl6pESYZQ1psPN6W5yValf7aFbXtRlODOjHY3LAf-9L1ZVLKwtW7jtAReayYSZYbkekzQ34saQoEJqyAaFytyfIe9Y6ZJ3D41guPP7CMomHnwXtPGMXt4Qgh2M22T3trfoJW7SLoNumchIcmpI8zMk5fpO7Qo7idKzf5dqEWvdby8Oizsx6M2jcdmGBryIqDPBJS1mAgAvl8zM"
+    ],
+    "sizes": [
+      "2 años",
+      "3 años",
+      "4 años",
+      "5 años",
+      "6 años"
+    ]
+  },
+  {
+    "id": "m1",
+    "name": "Muñeca de Trapo 'Silvia'",
+    "price": 25,
+    "description": "Muñeca hecha a mano con mucho cariño. Viste un vestidito turquesa intercambiable. Suave y segura para todas las edades.",
+    "materials": [
+      "Tela de lino",
+      "Relleno hipoalergénico"
+    ],
+    "category": "munecos",
+    "images": [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAMukH77ApYRP9qLiGrNcDdsgSnKtjmDvK7_PMUEtTO0JksVAk5HXa-6Z1iGUlcEiZWiL3h6sLCDd0tQdNGFQ3h6uy8taxhkOVjC-SUBkSJVFV1BYwBOvv2Nc3IRpZB1XutKW4oE-N3jVBUJO8MMWsBsK9WcRnJvYzF1cLv0FdUDmphVehjdobQwzXKe4dy1lg5kItUAKMzb3ajG6GA5wYEMs_9NmykSsbUvEbKECX03GJfdYNtcOSV"
+    ],
+    "sizes": [
+      "35 cm de alto"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "cp2",
+    "name": "Portachupetes y Manta Personalizada",
+    "price": 28,
+    "description": "Conjunto personalizado compuesto por una mantita suave y un portachupetes a juego. Bordamos el nombre del bebé a mano para hacerlo único. Ideal para regalo.",
+    "materials": [
+      "100% Algodón",
+      "Forro polar suave",
+      "Pinza metálica sin níquel"
+    ],
+    "category": "complementos",
+    "images": [
+      "/bolsitos.png"
+    ],
+    "sizes": [
+      "Talla Única"
+    ],
+    "isNew": true
+  },
+  {
+    "id": "prod_1787039064098",
+    "name": "Baton Punto Celeste",
+    "price": 70,
+    "description": "Conjuto Baton hecho a mano.\r\nPlumeti con tira bordada.\r\nCompuesto por batón, capota, patucos merceditas, cuello y chupetero.",
+    "materials": [
+      "Hilo de algodón \r"
+    ],
+    "careGuide": "Lavado a mano",
+    "category": "canastilla",
+    "sizes": [
+      "Talla Única"
+    ],
+    "isNew": true,
+    "images": [
+      "/uploads/1787039064090-944658059-baton_azul.jpg",
+      "/uploads/1787039064095-725482989-Baton_azul_ampliado.jpg"
+    ]
+  }
+]

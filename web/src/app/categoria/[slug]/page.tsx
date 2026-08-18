@@ -32,7 +32,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <main className="flex-grow w-full max-w-[1200px] mx-auto px-6 py-12 mt-8">
       <div className="text-center mb-16">
-        <h1 className="font-headline-xl text-[48px] font-semibold text-primary">
+        <h1 className="font-great-vibes text-[56px] md:text-[64px] font-normal text-primary">
           {title}
         </h1>
         <div className="w-16 h-1 bg-secondary mx-auto mt-6 rounded-full opacity-50"></div>

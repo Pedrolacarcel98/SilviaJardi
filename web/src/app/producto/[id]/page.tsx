@@ -2,6 +2,7 @@ import { getProductById, mockProducts } from "@/data/mockProducts";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import ProductGallery from "@/components/ProductGallery";
 
 interface ProductPageProps {
   params: Promise<{
@@ -44,37 +45,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="flex flex-col lg:flex-row gap-12">
         {/* Gallery Section */}
         <div className="w-full lg:w-1/2 flex flex-col gap-4">
-          <div className="aspect-square relative rounded-2xl overflow-hidden bg-surface-container-low ambient-glow border border-surface-container-low">
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-            />
-            {product.isNew && (
-              <div className="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-4 py-1 rounded-full font-label-sm text-[12px] shadow-sm font-medium">
-                Nuevo
-              </div>
-            )}
-          </div>
-          {/* Thumbnails if multiple images */}
-          {product.images.length > 1 && (
-            <div className="flex gap-4 overflow-x-auto pb-2">
-              {product.images.map((img, index) => (
-                <div
-                  key={index}
-                  className={`w-24 h-24 relative rounded-lg overflow-hidden border-2 cursor-pointer transition-all ${
-                    index === 0
-                      ? "border-primary"
-                      : "border-transparent opacity-70 hover:opacity-100"
-                  }`}
-                >
-                  <Image src={img} alt={`${product.name} thumbnail`} fill className="object-cover" />
-                </div>
-              ))}
-            </div>
-          )}
+          <ProductGallery 
+            images={product.images} 
+            productName={product.name} 
+            isNew={product.isNew} 
+            hasSalePrice={!!product.salePrice} 
+          />
         </div>
 
         {/* Info Section */}
@@ -82,9 +58,22 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <h1 className="font-headline-lg text-[40px] font-semibold text-primary mb-2 leading-tight">
             {product.name}
           </h1>
-          <p className="font-headline-md text-[28px] text-secondary font-medium mb-8">
-            {product.price.toFixed(2)} €
-          </p>
+          <div className="font-headline-md text-[28px] font-medium mb-8 flex items-center gap-3">
+            {product.salePrice ? (
+              <>
+                <span className="text-on-surface-variant line-through text-[20px] opacity-70">
+                  {product.price.toFixed(2)} €
+                </span>
+                <span className="text-error font-bold">
+                  {product.salePrice.toFixed(2)} €
+                </span>
+              </>
+            ) : (
+              <span className="text-secondary">
+                {product.price.toFixed(2)} €
+              </span>
+            )}
+          </div>
 
           <div className="mb-8">
             <h3 className="font-label-md text-[16px] text-on-surface-variant font-semibold mb-3 uppercase tracking-wider">
@@ -103,12 +92,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
 
           <div className="mb-10">
-            <button className="w-full bg-primary text-on-primary py-4 rounded-full font-label-md text-[16px] font-semibold hover:bg-on-primary-fixed hover:shadow-lg transition-all flex items-center justify-center gap-2">
+            <a 
+              href={`https://wa.me/34658271773?text=${encodeURIComponent(`Hola! estoy interesado/a en "${product.name}" de la seccion "${product.category}", me gustaria realizar el pedido.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-primary text-on-primary py-4 rounded-full font-label-md text-[16px] font-semibold hover:bg-on-primary-fixed hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            >
               <span className="material-symbols-outlined">shopping_bag</span>
-              Consultar disponibilidad
-            </button>
+              Realizar pedido
+            </a>
             <p className="text-center font-body-md text-[14px] text-on-surface-variant mt-3">
-              Actualmente web escaparate. Contacta por WhatsApp para pedidos.
+              Actualmente web escaparate. Pedidos directos a través de WhatsApp.
             </p>
           </div>
 

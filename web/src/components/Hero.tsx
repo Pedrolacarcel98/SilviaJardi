@@ -10,9 +10,8 @@ export default function Hero() {
             backgroundPosition: "center"
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent"></div>
-        <div className="relative z-10 text-center px-6 max-w-2xl bg-surface-container-lowest/80 backdrop-blur-sm p-16 rounded-xl border border-surface-container-low">
-          <h1 className="font-headline-xl text-[48px] font-semibold leading-[1.1] tracking-[-0.03em] text-primary mb-8">
+        <div className="relative z-10 w-[calc(100%-2rem)] md:w-auto text-center px-6 max-w-2xl bg-white p-8 md:p-16 mx-4 md:mx-0 rounded-xl shadow-lg border border-surface-container-low">
+          <h1 className="font-great-vibes text-[56px] md:text-[72px] font-normal leading-[1.1] text-primary mb-8">
             Moda infantil hecha a mano
           </h1>
           <p className="font-body-lg text-[18px] leading-[1.7] text-on-surface-variant mb-16">

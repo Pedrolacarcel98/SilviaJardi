@@ -2,8 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 export default function Navbar() {
+  const router = useRouter();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [infantilOpen, setInfantilOpen] = useState(false);
@@ -15,6 +19,15 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/buscar?q=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchOpen(false);
+      setSearchQuery("");
+    }
+  };
 
   const infantilLinks = [
     { href: "/categoria/canastilla", label: "Canastilla" },
@@ -46,14 +59,9 @@ export default function Navbar() {
           href="/"
           className="mx-auto md:mx-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center justify-center"
         >
-          {/* Usamos next/image para optimización */}
-          <Image 
-            src="/logo.png" 
-            alt="Silvia Jardi" 
-            width={200}
-            height={64}
-            className="h-12 md:h-16 w-auto object-contain"
-          />
+          <span className="font-great-vibes text-[36px] md:text-[44px] text-primary whitespace-nowrap">
+            Silvia Jardi
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -91,31 +99,53 @@ export default function Navbar() {
           >
             Túnicas Semana Santa
           </Link>
+          <Link
+            href="/contacto"
+            className="text-on-surface-variant font-body-md text-[16px] hover:text-primary transition-colors duration-200"
+          >
+            Contacto
+          </Link>
         </div>
 
-        <div className="flex gap-2 md:gap-4 text-primary">
-          <button
-            aria-label="Search"
-            className="hover:text-secondary-container transition-colors duration-200 p-2 rounded-full hover:bg-surface-container-low hidden sm:block"
-          >
-            <span
-              className="material-symbols-outlined"
-              style={{ fontVariationSettings: "'FILL' 0" }}
+        <div className="flex items-center text-primary">
+          {searchOpen ? (
+            <form 
+              onSubmit={handleSearch} 
+              className="flex items-center bg-surface-container-low rounded-full px-4 py-1"
             >
-              search
-            </span>
-          </button>
-          <button
-            aria-label="Favorite"
-            className="hover:text-secondary-container transition-colors duration-200 p-2 rounded-full hover:bg-surface-container-low"
-          >
-            <span
-              className="material-symbols-outlined"
-              style={{ fontVariationSettings: "'FILL' 0" }}
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Buscar..."
+                autoFocus
+                className="bg-transparent border-none outline-none text-on-surface text-sm w-32 md:w-48 placeholder:text-on-surface-variant/50"
+              />
+              <button type="submit" className="p-1 text-primary hover:text-secondary ml-1 flex items-center justify-center">
+                <span className="material-symbols-outlined text-[20px]">search</span>
+              </button>
+              <button 
+                type="button" 
+                onClick={() => setSearchOpen(false)}
+                className="p-1 text-on-surface-variant hover:text-error ml-1 flex items-center justify-center"
+              >
+                <span className="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </form>
+          ) : (
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
+              className="hover:text-secondary-container transition-colors duration-200 p-2 rounded-full hover:bg-surface-container-low"
             >
-              favorite
-            </span>
-          </button>
+              <span
+                className="material-symbols-outlined"
+                style={{ fontVariationSettings: "'FILL' 0" }}
+              >
+                search
+              </span>
+            </button>
+          )}
         </div>
       </div>
 
@@ -160,6 +190,13 @@ export default function Navbar() {
             className="text-on-surface-variant font-body-md text-[18px] py-2 border-b border-surface-container-low last:border-0 hover:text-primary transition-colors duration-200"
           >
             Túnicas Semana Santa
+          </Link>
+          <Link
+            href="/contacto"
+            onClick={() => setMenuOpen(false)}
+            className="text-on-surface-variant font-body-md text-[18px] py-2 border-b border-surface-container-low last:border-0 hover:text-primary transition-colors duration-200"
+          >
+            Contacto
           </Link>
         </div>
       )}
